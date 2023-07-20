@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head> 
+
+<body class="flex-column min-100vh">
+    <header class="app-headline">
+        <h1 class="'app-title">Movie Forecast</h1>
+        <p>Search for a postcode, and see when you should go see a movie!</p>
+    </header>
+
+<!-- Kat's div -->
+    <div class="search-parameters">
+        <h2 class="card-header text-uppercase">Search by Postcode</h2>
+        <form id="user-form" class="card-body">
+            <label class="form-label" for="suburb">Suburb</label>
+            <input name="suburb" id="suburb" type="text" autofocus="true" class="form-input">
+            <button type="submit" class="suburb-btn">Search Suburb</button>
+        </form>
+    </div>
+
+<!-- Phil's div     -->
+    <div class="weather-data">
+
+    </div>
+
+<!-- Alex's div     -->
+    <div class="showtimes-data">
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+  </html>
