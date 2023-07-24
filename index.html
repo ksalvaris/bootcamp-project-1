@@ -8,20 +8,29 @@
     <link rel="stylesheet" href="style.css" />
   </head> 
 
-<body class="flex-column min-100vh">
+<body class="flex-column min-100vh px-4">
     <header class="app-headline">
-        <h1 class="'app-title">Movie Forecast</h1>
-        <p>Search for a postcode, and see when you should go see a movie!</p>
+        <h1 class="'app-title text-2xl uppercase font-bold">Movie Forecast</h1>
+        <p class="text-xl">Search for a postcode, and see when you should go see a movie!</p>
     </header>
 
+    <br>
+
 <!-- Kat's div -->
-    <div class="search-parameters">
-        <h2 class="card-header text-uppercase">Search by Postcode</h2>
-        <form id="user-form" class="card-body">
-            <label class="form-label" for="suburb">Suburb</label>
-            <input name="suburb" id="suburb" type="text" autofocus="true" class="form-input">
-            <button type="submit" class="suburb-btn">Search Suburb</button>
-        </form>
+    <div class="search-parameters px-5 text-gray-700 flex flex-row border-4 w-1/2">
+        <div class="post-search basis-1/2">
+            <h2 class="searchpost-header text-lg font-semibold">Search by Postcode</h2>
+            <form id="user-form" class="card-body">
+                <label class="form-label" for="suburb">Suburb</label>
+                <input name="suburb" id="suburb" type="text" autofocus="true" class="form-input shadow border rounded appearance-none">
+                <button type="submit" class="suburb-btn rounded bg-blue-500 text-white px-4 py-2">Search Suburb</button>
+            </form>
+        </div>
+        <div class="weather-search basis-1/2">
+            <h2 class="weather-search-header text-lg font-semibold">Select Timing</h2>
+
+
+        </div>
     </div>
 
 <!-- Phil's div     -->
