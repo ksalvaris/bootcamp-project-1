@@ -1,38 +1,63 @@
-// import {weatherAPI} from './api_key.js';
-
-// console.log(weatherAPI); // Output: "Hello from file1.js!"
-
-// document.getElementById("searchForm").addEventListener("submit", function (event) {
-//     event.preventDefault();
-
-//     const city = document.getElementById("cityInput").value;
-
-//     const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q='+ city + '&appid=75f727c580049b6c9fecb8d9f5740286';
-
-//     fetch(apiUrl)
-//     .then((response) => response.json())
-//     .then((data) => {
-//         console.log(data);
-//         const weatherDataDiv = document.querySelector(".weather-data");
-//         weatherDataDiv.innerHTML = " ";
-//     })
-//     .catch((error) => {
-//         console.error("Error fetching data:", error);
-//     });
-// });
-
-var city = 'perth';
-const apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q='+ city + '&appid=75f727c580049b6c9fecb8d9f5740286';
-
-fetch(apiUrl)
-.then((response) => response.json())
-.then((data) => {
-    console.log(data);
-    // const weatherDataDiv = document.querySelector(".weather-data");
-    // weatherDataDiv.innerHTML = " ";
-})
-.catch((error) => {
-    console.error("Error fetching data:", error);
-});
-
-
+document.addEventListener("DOMContentLoaded", function () {
+    // Modal JavaScript (place it at the top, before the form submission event listener)
+    const closeModalBtn = document.querySelector(".modal-close");
+    const errorModal = document.querySelector(".modal");
+  
+    // Function to show the modal
+    function showModal() {
+      errorModal.classList.remove("hidden");
+    }
+  
+    // Function to hide the modal
+    function hideModal() {
+      errorModal.classList.add("hidden");
+    }
+  
+    // Close the modal when the close button is clicked
+    closeModalBtn.addEventListener("click", hideModal);
+  
+    // Close the modal when clicking outside the modal content
+    window.addEventListener("click", function (event) {
+      if (event.target === errorModal) {
+        hideModal();
+      }
+    });
+  
+    document.getElementById("searchForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+  
+      console.log('form submitted!');
+  
+      const city = document.getElementById("searchForm").querySelector("input[type='text']").value;
+  
+      const apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=75f727c580049b6c9fecb8d9f5740286';
+  
+      fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("City not found");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Save weather data to local storage for retrieval later
+          localStorage.setItem("weatherData", JSON.stringify(data));
+  
+          // Process 'data' and update 'weatherDataDiv' accordingly
+          console.log(data);
+          const weatherDataDiv = document.querySelector(".weather-data");
+          weatherDataDiv.innerHTML = " ";
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          showModal(); // Show the modal when an error occurs
+        });
+    });
+  
+    // To retrieve the data from local storage
+    const savedData = localStorage.getItem("weatherData");
+    if (savedData !== null) {
+      const data = JSON.parse(savedData);
+    }
+  });
+  

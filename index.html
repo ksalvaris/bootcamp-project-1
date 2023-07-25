@@ -21,13 +21,13 @@
         <div class="search-section px-5 text-gray-700 flex flex-row border-4">
             <div class="citysearch basis-1/1">
                 <h2 class="citysearch-header text-lg font-semibold">Search by Suburb</h2>
-                <form class="w-full max-w-sm">
+                <form id='searchForm' class="w-full max-w-sm">
                     <div class="flex items-center border-b border-teal-500 py-2">
                         <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter Suburb" aria-label="Suburb">
-                        <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+                        <button id = 'submit' class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
                             Search 
                         </button>
-                        <button class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
+                        <button class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="submit">
                             Cancel 
                         </button>   
                     </div>
@@ -35,21 +35,18 @@
                 
             </div>
         </div>
-
-        <br>
-
-        <div class="inline-block relative w-64">
-            <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                <option>Show current day weather</option>
-                <option>Show 5-day forecast</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-            </div>
-        </div>
-
-
     </div>
+    <!--Kat's Modal -->
+<!-- Modal -->
+<div class="fixed inset-0 flex items-center justify-center z-10 hidden">
+    <div class="modal-overlay fixed inset-0 bg-black opacity-25"></div>
+    <div class="modal-container bg-white p-4 rounded-lg shadow-lg">
+      <span class="modal-close absolute top-0 right-0 p-4 cursor-pointer">&times;</span>
+      <p class="text-lg font-bold">City not found. Please enter a valid city name.</p>
+    </div>
+</div>
+  
+  
 
 <!-- Phil's div     -->
     <div class="weather-data">
