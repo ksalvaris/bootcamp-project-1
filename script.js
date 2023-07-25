@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Modal JavaScript (place it at the top, before the form submission event listener)
+    // Modal JavaScript 
     const closeModalBtn = document.querySelector(".modal-close");
     const errorModal = document.querySelector(".modal");
   
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
       const city = document.getElementById("searchForm").querySelector("input[type='text']").value;
   
-      const apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=75f727c580049b6c9fecb8d9f5740286';
+      const apiUrl = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=' + weatherAPI;
   
       fetch(apiUrl)
         .then((response) => {
