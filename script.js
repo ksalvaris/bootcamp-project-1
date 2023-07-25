@@ -1,8 +1,10 @@
 
-var URL = "https://api-gate2.movieglu.com/filmsNowShowing/?n=2";
 var lat = '-22.0';
 var lon = '14.0';
 var latlon = lat + ';' + lon;
+var cinemaContainerEl = $('#cinema-container');
+var cinemaHeaderEl = $('#cinema-header');
+
 
 var data = {
   "cinemas": [
@@ -90,15 +92,33 @@ var data = {
   }
 }
 
+var dataShowtimes = 
 console.log(data.cinemas);
 
+function cinemaNearby() {
+  cinemaContainerEl.empty();
+  cinemaHeaderEl.text("Choose a Cinema near you to view the showtimes :)");
+  for (i = 0; i < data.cinemas.length; i++){
+      var cinemaDiv = $('<div>').addClass("rounded bg-teal-200 flex justify-center");
+      var cinemaUL = $('<ul>').addClass("list-none list-outside");
+      cinemaUL.attr("data-cinema-id", data.cinemas[i].cinema_id);
+      var cinemaLiName = $('<li>').text(data.cinemas[i].cinema_name);
+      var cinemaIcon = $('<img>').attr("src", data.cinemas[i].logo_url);
+      var Distance = data.cinemas[i].distance;
+      var cinemaDistance = $('<li>').text("Distance from you: " + Distance.toFixed(2) + "km");
+      cinemaUL.append(cinemaLiName, cinemaIcon, cinemaDistance);
+      cinemaDiv.append(cinemaUL);
+      cinemaContainerEl.append(cinemaDiv);
+  }};
 
+cinemaNearby();
 
-// fetch('https://api-gate2.movieglu.com/cinemasNearby/?n=5', {
+//this fetch is for getting nearby cimaessssaaassss
+// fetch('https://api-gate2.movieglu.com/cinemasNearby/?n=8', {
 //   headers: {
 //     'api-version': 'v200',
-//     'Authorization': 'Basic Qk9PVF83X1hYOkdGUm9ZV1dETUhrSw==',
-//     'x-api-key': '',
+//     'Authorization': Auth,
+//     'x-api-key': MovieAPIKey,
 //     'device-datetime': '2023-07-24T10:45:30.147Z',
 //     'territory': 'XX',
 //     'client': 'BOOT_7',
@@ -116,4 +136,27 @@ console.log(data.cinemas);
 //     console.error('Error fetching MovieGlu films:', error);
 //   });
 
-//   -22.0;14.0
+
+
+//this fetch is for showtimes
+//   fetch('https://api-gate2.movieglu.com/cinemaShowTimes/?cinema_id=10636&date=2023-07-26', {
+//   headers: {
+//     'api-version': 'v200',
+//     'Authorization': Auth,
+//     'x-api-key': MovieAPIKey,
+//     'device-datetime': '2023-07-24T10:45:30.147Z',
+//     'territory': 'XX',
+//     'client': 'BOOT_7',
+//     'geolocation': latlon,
+//   },
+// })
+//   .then(function (response) {
+//     return response.json();
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch(function (error) {
+//     console.error('Error fetching MovieGlu films:', error);
+//   });
+
