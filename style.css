@@ -1,5 +1,22 @@
-/* Custom CSS for cursor on close button */
-.modal-close {
-    cursor: pointer;
-  }
-  
+.hidden {
+  display: none;
+}
+
+body {
+  background-color: rgb(35, 35, 35);
+}
+
+h1 {
+  font-family: 'Creepster', cursive;
+  color: rgb(165, 8, 8);
+}  
+
+div,
+p {
+  font-family: 'Goldman', cursive;
+  color: rgb(193, 64, 64);
+}
+
+.card {
+  background-color:rgb(51, 27, 27)
+}

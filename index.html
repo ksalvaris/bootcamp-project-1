@@ -5,31 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Forecast</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Goldman&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css" />
   </head> 
 
 <body class="flex-column min-100vh px-4">
     <header class="app-headline">
-        <h1 class="'app-title text-2xl uppercase font-bold">Movie Forecast</h1>
+        <h1 class="'app-title text-6xl uppercase font-bold">Movie Forecast</h1>
         <p class="text-xl">Search for a postcode, and see when you should go see a movie!</p>
     </header>
 
     <br>
 
 <!-- Kat's div -->
-    <div class="card rounded w-1/3 bg-blue-200 p-3">
-        <div class="search-section px-5 text-gray-700 flex flex-row border-4">
+    <div class="card rounded w-1/3 p-3">
+        <div class="search-section px-5 text-gray-700 border-gray-500 flex flex-row border-4">
             <div class="citysearch basis-1/1">
                 <h2 class="citysearch-header text-lg font-semibold">Search by Suburb</h2>
                 <form id='searchForm' class="w-full max-w-sm">
-                    <div class="flex items-center border-b border-teal-500 py-2">
+                    <div class="flex items-center border-b py-2">
                         <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter Suburb" aria-label="Suburb">
-                        <button id = 'submit' class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+                        <button id = 'submit' class="flex-shrink-0 bg-red-500 hover:bg-teal-700 border-gray-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
                             Search 
-                        </button>
-                        <button class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="submit">
-                            Cancel 
-                        </button>   
+                        </button> 
                     </div>
                 </form>
                 
@@ -37,14 +34,12 @@
         </div>
     </div>
     <!--Kat's Modal -->
-<!-- Modal -->
-<div class="fixed inset-0 flex items-center justify-center z-10 hidden">
-    <div class="modal-overlay fixed inset-0 bg-black opacity-25"></div>
-    <div class="modal-container bg-white p-4 rounded-lg shadow-lg">
-      <span class="modal-close absolute top-0 right-0 p-4 cursor-pointer">&times;</span>
-      <p class="text-lg font-bold">City not found. Please enter a valid city name.</p>
+    <div class="modal fixed inset-0 flex items-center justify-center z-10 hidden">
+        <div class="modal-container bg-white p-4 rounded-lg shadow-lg">
+        <p class="text-lg font-bold">Suburb not found. Please enter a valid suburb name.</p>
+        <button class="modalclose flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">Close</button>
+        </div>
     </div>
-</div>
   
   
 
@@ -53,10 +48,12 @@
 
     </div> 
 
-<!-- Alex's div     -->
-    <div><p id="cinema-header" class="text-2xl uppercase font-bold text-center"> </p></div>
+<!--Alex's div -->
+<br>
+
+    <div class="text-gray-700"><p id="cinema-header" class="text-2xl uppercase font-bold text-center"> </p>
     <div id="cinema-container" class="p-8 grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-        <div class="rounded bg-teal-200 flex items-center justify-center">
+        <div class="rounded bg-blue-200 flex items-center justify-center">
             <ul class=>
                 <li>Event Cinema</li>
                 <li>Event Cinema</li>
@@ -64,14 +61,14 @@
                 <li>Event Cinema</li>
             </ul>
         </div>
-        <div class="bg-teal-200 flex items-center justify-center ">3</div>
-        <div class="bg-teal-200 flex items-center justify-center">4</div>
-        <div class="bg-teal-200 flex items-center justify-center">5</div>
-        <div class="bg-teal-200 flex items-center justify-center">6</div>
-        <div class="bg-teal-200 flex items-center justify-center">7</div>
+        <div class="bg-blue-200 flex items-center justify-center ">3</div>
+        <div class="bg-blue-200 flex items-center justify-center">4</div>
+        <div class="bg-blue-200 flex items-center justify-center">5</div>
+        <div class="bg-blue-200 flex items-center justify-center">6</div>
+        <div class="bg-blue-200 flex items-center justify-center">7</div>
 
     </div>
-
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
 			  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="

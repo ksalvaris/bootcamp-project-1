@@ -1,7 +1,7 @@
 //Kat's Script
 document.addEventListener("DOMContentLoaded", function () {
     // Modal JavaScript 
-    const closeModalBtn = document.querySelector(".modal-close");
+    const closeModalBtn = document.querySelector(".modalclose");
     const errorModal = document.querySelector(".modal");
   
     // Function to show the modal
@@ -14,15 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
       errorModal.classList.add("hidden");
     }
   
-    // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener("click", hideModal);
-  
-    // Close the modal when clicking outside the modal content
-    window.addEventListener("click", function (event) {
-      if (event.target === errorModal) {
-        hideModal();
-      }
-    });
+// Close the modal when the close button is clicked
+closeModalBtn.addEventListener("click", function () {
+  hideModal();
+});
+
   
     document.getElementById("searchForm").addEventListener("submit", function (event) {
       event.preventDefault();
@@ -41,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
           return response.json();
         })
         .then((data) => {
+        console.log(data);
+        if (data.length == 0) {
+          showModal();
+        }
           // Save weather data to local storage for retrieval later
           localStorage.setItem("weatherData", JSON.stringify(data));
   
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
-          showModal(); // Show the modal when an error occurs
+          showModal();
         });
     });
   
@@ -60,10 +60,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (savedData !== null) {
       const data = JSON.parse(savedData);
     }
-  });
+    });
   
 
-
+// Alex's script 
 
 var lat = '-22.0';
 var lon = '14.0';
@@ -163,9 +163,9 @@ console.log(data.cinemas);
 
 function cinemaNearby() {
   cinemaContainerEl.empty();
-  cinemaHeaderEl.text("Choose a Cinema near you to view the showtimes :)");
+  cinemaHeaderEl.text("Click on a Cinema near you to view the showtimes :)");
   for (i = 0; i < data.cinemas.length; i++){
-      var cinemaDiv = $('<div>').addClass("rounded bg-teal-200 flex justify-center");
+      var cinemaDiv = $('<div>').addClass("rounded bg-blue-200 font-semibold text-gray-600 flex justify-center");
       var cinemaUL = $('<ul>').addClass("list-none list-outside");
       cinemaUL.attr("data-cinema-id", data.cinemas[i].cinema_id);
       var cinemaLiName = $('<li>').text(data.cinemas[i].cinema_name);
