@@ -1,7 +1,7 @@
 //Kat's Script
 document.addEventListener("DOMContentLoaded", function () {
     // Modal JavaScript 
-    const closeModalBtn = document.querySelector(".modal-close");
+    const closeModalBtn = document.querySelector(".modalclose");
     const errorModal = document.querySelector(".modal");
   
     // Function to show the modal
@@ -14,15 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
       errorModal.classList.add("hidden");
     }
   
-    // Close the modal when the close button is clicked
-    closeModalBtn.addEventListener("click", hideModal);
-  
-    // Close the modal when clicking outside the modal content
-    window.addEventListener("click", function (event) {
-      if (event.target === errorModal) {
-        hideModal();
-      }
-    });
+// Close the modal when the close button is clicked
+closeModalBtn.addEventListener("click", function () {
+  hideModal();
+});
+
   
     document.getElementById("searchForm").addEventListener("submit", function (event) {
       event.preventDefault();
@@ -41,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
           return response.json();
         })
         .then((data) => {
+        console.log(data);
+        if (data.length == 0) {
+          showModal();
+        }
           // Save weather data to local storage for retrieval later
           localStorage.setItem("weatherData", JSON.stringify(data));
   
@@ -48,20 +48,28 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(data);
           const weatherDataDiv = document.querySelector(".weather-data");
           weatherDataDiv.innerHTML = " ";
-          var lat = data.lat;
-          var lon = data.lon;
+          var lat = data[0].lat;
+          var lon = data[0].lon;
 
-          printWeatherCrds(lat, lon);
+
+          displayCards(lat, lon);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
-          showModal(); // Show the modal when an error occurs
+          showModal();
         });
     });
   
     // To retrieve the data from local storage
-    getStoredLatLon();
-  });
+    const savedData = localStorage.getItem("weatherData");
+    if (savedData !== null) {
+      const data = JSON.parse(savedData);
+    }
+    });
+  
+ // End Search Section   
+
+// Alex's script 
   
 function getStoredLatLon(){
   const savedData = localStorage.getItem("weatherData");
@@ -78,201 +86,13 @@ var cinemaContainerEl = $('#cinema-container');
 var cinemaHeaderEl = $('#cinema-header');
 var filmModal = $('#film-modal')
 
-// const data = {
-//   "cinemas": [
-//     {
-//       "cinema_id": 10636,
-//       "cinema_name": "Cinema 6",
-//       "address": "Jetty",
-//       "address2": "address2",
-//       "city": "city",
-//       "state": "State",
-//       "county": "county",
-//       "postcode": "Zip",
-//       "lat": -22.680721,
-//       "lng": 14.519094,
-//       "distance": 57.55892076987,
-//       "logo_url": "https://assets.movieglu.com/chain_logos/xx/UK-0-sq.jpg"
-//     },
-//     {
-//       "cinema_id": 42963,
-//       "cinema_name": "Cinema 7",
-//       "address": "Welwitschia Plains",
-//       "address2": "address2",
-//       "city": "city",
-//       "state": "State",
-//       "county": "county",
-//       "postcode": "Zip",
-//       "lat": -22.669146,
-//       "lng": 15.028214,
-//       "distance": 80.352112347501,
-//       "logo_url": "https://assets.movieglu.com/chain_logos/xx/UK-0-sq.jpg"
-//     },
-//     {
-//       "cinema_id": 45353,
-//       "cinema_name": "Cinema 8",
-//       "address": "Eduard Bohlen",
-//       "address2": "address2",
-//       "city": "city",
-//       "state": "State",
-//       "county": "county",
-//       "postcode": "Zip",
-//       "lat": -23.996033,
-//       "lng": 14.457391,
-//       "distance": 140.95552847269,
-//       "logo_url": "https://assets.movieglu.com/chain_logos/xx/UK-0-sq.jpg"
-//     },
-//     {
-//       "cinema_id": 8845,
-//       "cinema_name": "Cinema 2",
-//       "address": "Deadvlei",
-//       "address2": "address2",
-//       "city": "city",
-//       "state": "State",
-//       "county": "county",
-//       "postcode": "Zip",
-//       "lat": -24.759233,
-//       "lng": 15.292389,
-//       "distance": 207.52516109344,
-//       "logo_url": "https://assets.movieglu.com/chain_logos/xx/UK-1-sq.jpg"
-//     },
-//     {
-//       "cinema_id": 9435,
-//       "cinema_name": "Cinema 5",
-//       "address": "Sesriem Canyon",
-//       "address2": "address2",
-//       "city": "city",
-//       "state": "State",
-//       "county": "county",
-//       "postcode": "Zip",
-//       "lat": -24.519194,
-//       "lng": 15.790539,
-//       "distance": 207.88720228852,
-//       "logo_url": "https://assets.movieglu.com/chain_logos/xx/UK-1-sq.jpg"
-//     }
-//   ],
-//   "status": {
-//     "count": 5,
-//     "state": "OK",
-//     "method": "cinemasNearby",
-//     "message": null,
-//     "request_method": "GET",
-//     "version": "BOOT_7_XXv200",
-//     "territory": "XX",
-//     "device_datetime_sent": "2023-07-24T10:45:30.147Z",
-//     "device_datetime_used": "2023-07-24 10:45:30"
-//   }
-// }
-// const dataShowtimes = {
-//   "cinema": {
-//       "cinema_id": 8941,
-//       "cinema_name": "Vue Cinemas - Reading"
-//   },
-//   "films": [
-//       {
-//           "film_id": 227902,
-//           "imdb_id": 3829266,
-//           "imdb_title_id": "tt3829266",
-//           "film_name": "The Predator",
-//           "other_titles": {
-//               "EN": "The Predator"
-//           },
-//           "version_type": "Standard",
-//           "age_rating": [
-//               {
-//                   "rating": "15 ",
-//                   "age_rating_image": "https://d2z9fe5yu2p0av.cloudfront.net/age_rating_logos/uk/15.png",
-//                   "age_advisory": "strong bloody violence, sex references, language"
-//               }
-//           ],
-//           "film_image": "https://d3ltpb4h29tx4j.cloudfront.net/227902/227902h2.jpg",
-//           "film_image_height": 199,
-//           "film_image_width": 300,
-//           "showings": {
-//               "Standard": {
-//                   "film_id": 227902,
-//                   "film_name": "The Predator",
-//                   "times": [
-//                       {
-//                           "start_time": "14:30",
-//                           "end_time": "16:36"
-//                       },
-//                       {
-//                           "start_time": "15:45",
-//                           "end_time": "17:51"
-//                       },
-//                       {
-//                           "start_time": "17:05",
-//                           "end_time": "19:11"
-//                       },
-//                       {
-//                           "start_time": "18:30",
-//                           "end_time": "20:36"
-//                       },
-//                       {
-//                           "start_time": "20:00",
-//                           "end_time": "22:06"
-//                       },
-//                       {
-//                           "start_time": "21:10",
-//                           "end_time": "23:16"
-//                       },
-//                       {
-//                           "start_time": "22:00",
-//                           "end_time": "00:06"
-//                       },
-//                       {
-//                           "start_time": "23:05",
-//                           "end_time": "01:11"
-//                       }
-//                   ]
-//               }
-//           },
-//           "show_dates": [
-//               {
-//                   "date": "2018-09-14"
-//               },
-//               {
-//                   "date": "2018-09-15"
-//               },
-//               {
-//                   "date": "2018-09-16"
-//               },
-//               {
-//                   "date": "2018-09-17"
-//               },
-//               {
-//                   "date": "2018-09-18"
-//               },
-//               {
-//                   "date": "2018-09-19"
-//               },
-//               {
-//                   "date": "2018-09-20"
-//               }
-//           ]
-//       }
-// ],
-//   "status": {
-//       "count": 13,
-//       "state": "OK",
-//       "method": "cinemaShowTimes",
-//       "message": null,
-//       "request_method": "GET",
-//       "version": "MGv200",
-//       "territory": "UK",
-//       "device_datetime_sent": "2018-09-14T14:13:40.375Z",
-//       "device_datetime_used": "2018-09-14 14:13:40"
-// }
-// };
-
 
 
 function printCinemaNearby(data) {
   cinemaContainerEl.empty();
-  cinemaHeaderEl.text("Choose a Cinema near you to view the showtimes :)");
+  cinemaHeaderEl.text("Click on a Cinema near you to view the showtimes :)").addClass("text-stone-400");
   for (i = 0; i < data.cinemas.length; i++){
-      var cinemaDiv = $('<div>').addClass("cursor-pointer cinemalists rounded bg-teal-200 flex justify-center");
+      var cinemaDiv = $('<div>').addClass("card rounded p-3 border-4 border-gray-500 bg-rose-950 cursor-pointer cinemalists font-semibold text-gray-600 flex justify-center");
       var cinemaUL = $('<ul>').addClass("list-none list-outside");
       cinemaUL.attr("data-cinemaid", data.cinemas[i].cinema_id);
       var cinemaLiName = $('<li>').text(data.cinemas[i].cinema_name);
@@ -283,18 +103,6 @@ function printCinemaNearby(data) {
       cinemaDiv.append(cinemaUL);
       cinemaContainerEl.append(cinemaDiv);
   }};
-
-  // {
-  //   "1": {
-  //     "image_orientation": "portrait",
-  //     "region": "UK",
-  //     "medium": {
-  //       "film_image": "https://image.movieglu.com/7772/GBR_007772h0.jpg",
-  //       "width": 200,
-  //       "height": 300
-  //     }
-  //   }
-  // }
 
 //function to display movies + back button.
 function printMovies(dataShowtimes) {
@@ -343,12 +151,6 @@ fetch('https://api-gate2.movieglu.com/cinemasNearby/?n=8', {
     console.error('Error fetching MovieGlu films:', error);
   });
 };
-
-getCinemas(latlon);
-// printCinemaNearby(data);
-// $('#submit').click(function(event){
-//   getCinemas(latlon);
-// })
 
 
 //write function to grab movie+showtime data from fetch request.
@@ -431,7 +233,7 @@ function printTimes(targetID){
 
 function displayCards(lat, lon){
  var queryurl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric" + "&appid=" + weatherAPI;
-fetch(queryurl)
+  fetch(queryurl)
     .then(function(response){
         if(response.ok){
             return response.json();
@@ -514,7 +316,6 @@ fetch(queryurl)
                     
         })
     }
-    displayCards(lat, lon);
 
             
             
