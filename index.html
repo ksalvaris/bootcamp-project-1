@@ -4,8 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Forecast</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Goldman&display=swap" rel="stylesheet">    <link rel="stylesheet" href="style.css" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Goldman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <script
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+  ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head> 
 
 <body class="flex-column min-100vh px-4">
@@ -44,31 +51,26 @@
   
 
 <!-- Phil's div     -->
-    <div class="weather-data">
-
-    </div> 
-
-<!--Alex's div -->
-<br>
-
-    <div class="text-gray-700"><p id="cinema-header" class="text-2xl uppercase font-bold text-center"> </p>
-    <div id="cinema-container" class="p-8 grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-        <div class="rounded bg-blue-200 flex items-center justify-center">
-            <ul class=>
-                <li>Event Cinema</li>
-                <li>Event Cinema</li>
-                <li>Event Cinema</li>
-                <li>Event Cinema</li>
-            </ul>
-        </div>
-        <div class="bg-blue-200 flex items-center justify-center ">3</div>
-        <div class="bg-blue-200 flex items-center justify-center">4</div>
-        <div class="bg-blue-200 flex items-center justify-center">5</div>
-        <div class="bg-blue-200 flex items-center justify-center">6</div>
-        <div class="bg-blue-200 flex items-center justify-center">7</div>
-
+    <div class="weather-data flex flex-row justify-around items-stretch w-2/4 text-neutral-50 text-center bg-sky-400 content-stretch flex-wrap border-4 border-cyan-200">
+        <div class = "weatherTitle block  self-start m-5 w-96 h-14 bg-blue-400 mt-8 text-4xl flex-auto text-center border-4 border-cyan-200">Upcoming Weather</div>
+        <div class = "instruct block self-start m-5 w-96 bg-indigo-500 text-center mt-10 text-xl flex-auto border-4 border-cyan-200">Select a day to view movie & session times</div>
+        <div class = "cards m-0 bg-cyan-700	inline-flex flex-row flex-wrap justify-center items-start content-center border-cyan-200 border-t-4" id = cards></div>
     </div>
-    </div>
+
+<!-- Alex's div     -->
+    <div><p id="cinema-header" class="text-2xl uppercase font-bold text-center"> </p></div>
+    <div id="cinema-container" class="p-8 grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4"></div>
+
+    <!-- Alex Modal for film times -->
+    <div id="film-modal" class="fixed inset-0 flex items-center justify-center z-10 hidden">
+        <div class="modal-container bg-white p-4 rounded-lg shadow-lg">
+          <span class="modal-close absolute top-0 right-0 p-4 cursor-pointer">&times;</span>
+          <p class="py-2 text-lg font-bold">Here are the showings for <span id="film"></span>:</p>
+          <ul id="filmtimes" class="list-none list-outside text-center"></ul>  
+          <div class="bg-gray-50 px-4 py-3 justify-center sm:flex sm:px-6">
+            <button type="button" id="go-back" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Back</button>
+          </div>
+       
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
 			  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
