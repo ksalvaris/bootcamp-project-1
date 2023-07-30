@@ -6,6 +6,12 @@
     <title>Movie Forecast</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <script
+    src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"
+  ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head> 
 
 <body class="flex-column min-100vh px-4">
@@ -50,9 +56,11 @@
   
 
 <!-- Phil's div     -->
-    <div class="weather-data">
-
-    </div> 
+    <div class="weather-data flex flex-row justify-around items-stretch w-2/4 text-neutral-50 text-center bg-sky-400 content-stretch flex-wrap border-4 border-cyan-200">
+        <div class = "weatherTitle block  self-start m-5 w-96 h-14 bg-blue-400 mt-8 text-4xl flex-auto text-center border-4 border-cyan-200">Upcoming Weather</div>
+        <div class = "instruct block self-start m-5 w-96 bg-indigo-500 text-center mt-10 text-xl flex-auto border-4 border-cyan-200">Select a day to view movie & session times</div>
+        <div class = "cards m-0 bg-cyan-700	inline-flex flex-row flex-wrap justify-center items-start content-center border-cyan-200 border-t-4" id = cards></div>
+    </div>
 
 <!-- Alex's div     -->
     <div><p id="cinema-header" class="text-2xl uppercase font-bold text-center"> </p></div>
