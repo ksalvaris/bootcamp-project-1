@@ -1,1 +1,5 @@
-
+/* Custom CSS for cursor on close button */
+.modal-close {
+    cursor: pointer;
+  }
+  
