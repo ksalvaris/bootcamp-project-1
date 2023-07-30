@@ -428,9 +428,6 @@ function printTimes(targetID){
   filmModal.removeClass("hidden");
 }
 
-var weatherAPI = "03e23eb4d6e32c18d7d49a0a00b07536"
-var lat =  -31.950527 //"userinput from kat" //
-var lon =  115.860458 //"userinput from kat" //
 
 function displayCards(lat, lon){
  var queryurl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric" + "&appid=" + weatherAPI;
@@ -521,7 +518,7 @@ fetch(queryurl)
 
             
             
-        // weathers[i] == "clear sky" || "few clouds" || "scattered clouds" || "broken clouds"
+        
             
 
 
