@@ -8,15 +8,9 @@ body {
 
 h1 {
   font-family: 'Creepster', cursive;
-  color: rgb(165, 8, 8);
 }  
 
 div,
 p {
   font-family: 'Goldman', cursive;
-  color: rgb(193, 64, 64);
-}
-
-.card {
-  background-color:rgb(51, 27, 27)
 }

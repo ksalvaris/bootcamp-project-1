@@ -163,9 +163,9 @@ console.log(data.cinemas);
 
 function cinemaNearby() {
   cinemaContainerEl.empty();
-  cinemaHeaderEl.text("Click on a Cinema near you to view the showtimes :)");
+  cinemaHeaderEl.text("Click on a Cinema near you to view the showtimes :)").addClass("text-stone-400");
   for (i = 0; i < data.cinemas.length; i++){
-      var cinemaDiv = $('<div>').addClass("rounded bg-blue-200 font-semibold text-gray-600 flex justify-center");
+      var cinemaDiv = $('<div>').addClass("card rounded p-3 border-4 border-gray-500 bg-rose-950 font-semibold text-gray-600 flex justify-center");
       var cinemaUL = $('<ul>').addClass("list-none list-outside");
       cinemaUL.attr("data-cinema-id", data.cinemas[i].cinema_id);
       var cinemaLiName = $('<li>').text(data.cinemas[i].cinema_name);
