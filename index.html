@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Forecast</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <script
     src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
@@ -49,6 +49,7 @@
     <div class="modal-container bg-white p-4 rounded-lg shadow-lg">
       <span class="modal-close absolute top-0 right-0 p-4 cursor-pointer">&times;</span>
       <p class="text-lg font-bold">City not found. Please enter a valid city name.</p>
+      
     </div>
 </div>
   
@@ -63,21 +64,18 @@
 
 <!-- Alex's div     -->
     <div><p id="cinema-header" class="text-2xl uppercase font-bold text-center"> </p></div>
-    <div id="cinema-container" class="p-8 grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
-        <div class="rounded bg-teal-200 flex items-center justify-center">
-            <ul class=>
-                <li>Event Cinema</li>
-                <li>Event Cinema</li>
-                <li>Event Cinema</li>
-                <li>Event Cinema</li>
-            </ul>
-        </div>
-        <div class="bg-teal-200 flex items-center justify-center ">3</div>
-        <div class="bg-teal-200 flex items-center justify-center">4</div>
-        <div class="bg-teal-200 flex items-center justify-center">5</div>
-        <div class="bg-teal-200 flex items-center justify-center">6</div>
-        <div class="bg-teal-200 flex items-center justify-center">7</div>
+    <div id="cinema-container" class="p-8 grid gap-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4"></div>
 
+    <!-- Alex Modal for film times -->
+    <div id="film-modal" class="fixed inset-0 flex items-center justify-center z-10 hidden">
+        <div class="modal-container bg-white p-4 rounded-lg shadow-lg">
+          <span class="modal-close absolute top-0 right-0 p-4 cursor-pointer">&times;</span>
+          <p class="py-2 text-lg font-bold">Here are the showings for <span id="film"></span>:</p>
+          <ul id="filmtimes" class="list-none list-outside text-center"></ul>  
+          <div class="bg-gray-50 px-4 py-3 justify-center sm:flex sm:px-6">
+            <button type="button" id="go-back" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto">Back</button>
+          </div>
+        </div>
     </div>
 
 
