@@ -14,7 +14,9 @@ Movie Glu API
 Google Fonts 
 
 ## Screenshot
-
+![initialsearch](https://github.com/ksalvaris/bootcamp-project-1/assets/135576862/b067b103-6525-45c8-816f-238202c349ed)
+![movies](https://github.com/ksalvaris/bootcamp-project-1/assets/135576862/1fb54b34-4d17-4bae-91bb-d79581cf5a4a)
+![movietimes](https://github.com/ksalvaris/bootcamp-project-1/assets/135576862/d749f061-85ad-4a90-944f-73599b10c597)
 
 ## Link to deployed application 
-
+https://ksalvaris.github.io/bootcamp-project-1/
