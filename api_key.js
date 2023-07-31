@@ -1,4 +1,3 @@
-
 // api_key.js 
 const weatherAPI = ""; 
 const Auth = '';
